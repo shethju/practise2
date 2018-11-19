@@ -1,3 +1,4 @@
+package basic.minstack;
 
 public class MyStackMain {
 
@@ -5,17 +6,22 @@ public class MyStackMain {
 		// TODO Auto-generated method stub
 		MyStack<String> my = new MyStack<String>();
 		my.print();
-		my.push("abc1");
-		my.push("abc2");
+		System.out.println("minvalue " + my.getMinValue());
 		my.push("abc3");
+		System.out.println("minvalue " + my.getMinValue());
+		my.push("abc1");
+		System.out.println("minvalue " + my.getMinValue());
+		my.push("abc2");
 		my.print();
-		System.out.println("isEmpty value " + my.isEmpty());
+		System.out.println("minvalue " + my.getMinValue());
+		System.out.println("peek " + my.peek());
+		System.out.println("isEmpty value " + my.empty());
 		System.out.println("pop value " + my.pop());
 		System.out.println("pop value " + my.pop());
 		System.out.println("pop value " + my.pop());
 		System.out.println("pop value " + my.pop());
 		my.print();
-		System.out.println("isEmpty value " + my.isEmpty());
+		System.out.println("isEmpty value " + my.empty());
 		my.print();
 		my.peek();
 	}

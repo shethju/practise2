@@ -1,33 +1,43 @@
+package basic.minstack;
 
-public class MyStack<T> {
+public class MyStack<T extends Comparable<T>> {
 	MyStackNode<T> tos = null;
 	
-	public MyStack() {}
+	//public MyStack() {}
 	
-	public boolean isEmpty() {
+	public boolean empty() {
 		return (tos == null) ? true : false;
 	}
 	
 	public void push(T t) {
-		MyStackNode<T> tmp = new MyStackNode<T>(t);
+		MyStackNode<T> tmp = new MyStackNode<T>(t); // Note constructor
 		if (tos == null) {
 			tos = tmp;
+			tmp.setMinValue(t);
 		} else {
+			if (tmp.compareTo(tos) < 0) {
+				tmp.setMinValue(t);
+			} else {
+				tmp.setMinValue(tos.getMinValue());
+			}
 			tmp.nextNode = tos;
 			tos = tmp;
 		}
 	}
 	
 	public T pop() {
-		if (isEmpty()) return null;
+		if (empty()) return null;
 		T value = tos.getValue();
 		tos = tos.nextNode;
 		return value;
 	}
 
-	public void peek() {
-		// TODO Auto-generated method stub
-		
+	public T peek() {
+		return (empty()) ? null : tos.getValue();
+	}
+	
+	public T getMinValue() {
+		return (empty()) ? null : tos.getMinValue();
 	}
 	
 	public void print() {
